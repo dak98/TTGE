@@ -37,3 +37,55 @@ Although not used in further equations, it may sometimes be necessary to also de
 
 where ![equation](http://latex.codecogs.com/gif.latex?D) is the previously defined dependency relation.
 
+## Gaussian elimination as a trace
+Using previously stated atomic operations, we will now describe the algorithm of Gaussian elimination for a ![equation](http://latex.codecogs.com/gif.latex?N\times%20N) matrix:
+
+![equation](http://latex.codecogs.com/gif.latex?t%3Dt_1\circ%20t_2%20\circ%20\dots%20\circ%20t_{N-1}),
+
+where ![equation](http://latex.codecogs.com/gif.latex?t_i%3D\langle%20A_{i,j},%20B_{i,j,k},%20C_{i,j,k}%20\rangle%20\quad%20\underset{i%20%3C%20j%20\leq%20N}{\forall}%20\\;%20\underset{i%20\leq%20k%20\leq%20N+1}{\forall}) and ![equation](http://latex.codecogs.com/gif.latex?\langle%20\\,%20\circ%20\\,%20\rangle) is the concatenation operation.
+
+## Foata's normal form
+The final step is to devide the trace into Foata's classes. Elements contained in the same class could be executed simultaneously and must all conclude before the next class could begin. Finally we get:
+
+![equation](http://latex.codecogs.com/gif.latex?FNF%3DFNF_1%20\\;%20FNF_2%20\\;%20\dots%20\\;%20FNF_{N-1}),
+
+where ![equation](http://latex.codecogs.com/gif.latex?FNF_i%3D[A_{i,j}]%20\\;%20[B_{i,j,k}]%20\\;%20[C_{i,j,k}]%20\\;%20\underset{i%20%3C%20j%20\leq%20N}{\forall}%20\\;%20\underset{i%20\leq%20k%20\leq%20N+1}{\forall}).
+
+# Implementation
+The main algorithm and the atomic operations described above are implemented in the `main.cpp` file. The `parallel_call.hpp` file contains template parallel `for` loops used to simultaneously execute elements of a single Foata's class.
+
+# Usage
+The project was verified to work under Debian 10 with gcc 8.3.0. To compile it use the command:
+```
+g++ main.cpp -std=c++17 -pthread -o tt
+```
+and to run it type:
+```
+./tt
+```
+## Input data
+The supplied matrix must be of the form:
+```
+N (number of rows)
+N lines of N numbers representing the matrix
+...
+N numbers for the vector from the right side of the equation
+```
+e.g.
+```
+4
+4 5 2.3 1
+-3 5 6.3 10
+1.2 4.7 -9.8 1
+2.4 2.8 -0.3 2
+5 3.4 -7.8 4
+```
+gives a result
+```
+4
+1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1
+2.16191 -1.24868 0.588533 1.24214
+```
