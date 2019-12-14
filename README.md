@@ -11,5 +11,4 @@ The first step is to identify and define atomic operations of the algorithm whic
 ## Trace Theory Alphabet
 To implement Gaussian elimination for a ![equation](http://latex.codecogs.com/gif.latex?N\times%20N) matrix, we will use appropriate atomic operations. They create an alphabet:
 
-![equation](http://latex.codecogs.com/gif.latex?\Sigma%3D\{A_{i,j},B_{i,j,k},C_{i,j,k}\}%20\}%20\quad%20\underset{1%20\leq%20i%20%3C%20N}{\forall}%20\;%20\underset{i%20%3C%20j%20\leq%20N}{\forall}%20\;%20\underset{i%20\leq%20k%20\leq%20N+1}{\forall})
-
+![equation](http://latex.codecogs.com/gif.latex?\Sigma%3D%20\\{A_{i,j},%20B_{i,j,k},%20C_{i,j,k}%20\\}%20\quad%20\underset{1%20\leq%20i%20%3C%20N}{\forall}%20\\;%20\underset{i%20%3C%20j%20\leq%20N}{\forall}%20\\;%20\underset{i%20\leq%20k%20\leq%20N+1}{\forall})
