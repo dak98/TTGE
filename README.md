@@ -1,5 +1,5 @@
 # Trace Theory Gaussian Elimination (TTGE)
-Above repository contains a parallel implementation of the Gaussian elimination algorithm using Trace Theory mathematical formalizm.
+Above repository contains a parallel implementation of the Gaussian elimination algorithm using Trace Theory.
 
 # Trace Theory
 ## Atomic operations
